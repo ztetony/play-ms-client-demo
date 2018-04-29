@@ -5,8 +5,8 @@
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:\play-1.2.7\framework\play-1.2.7.jar" sourcepath="C:/play-1.2.7/framework/src" />
-	<classpathentry kind="lib" path="E:\playmsclient\lib\eureka-client-sdk-1.0.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="E:\playmsclient\lib\javassist-3.20.0-GA.jar"/>
+	<classpathentry kind="lib" path="E:\play-ms-client-demo\lib\eureka-client-sdk-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="E:\play-ms-client-demo\lib\javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="lib" path="C:\play-1.2.7\framework\lib\activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:\play-1.2.7\framework\lib\antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="C:\play-1.2.7\framework\lib\asm-all-3.3.1.jar"/>

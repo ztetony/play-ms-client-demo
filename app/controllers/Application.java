@@ -53,9 +53,9 @@ public class Application extends Controller {
             Param<String, Object> param1 = new Param<String, Object>();
             param1.put("msapiurl", msapiurl);
             param1.put("method", method);
-            param1.put("contentType",contentType);
-            param1.put("headers",JSON.toJSONString(header2));
-            param1.put("params",JSON.toJSONString(param2));
+            param1.put("contentType", contentType);
+            param1.put("headers", JSON.toJSONString(header2));
+            param1.put("params", JSON.toJSONString(param2));
 
             RestTemplate restTemplate = new RestTemplate();
             result = restTemplate.invokeForEntity(proxy, method, contentType, header1, param1, 10 * 1000);
@@ -64,7 +64,7 @@ public class Application extends Controller {
             e.printStackTrace();
         }
 
-        long costTime = System.currentTimeMillis()-start;
+        long costTime = System.currentTimeMillis() - start;
         Logger.info("cost time: %s ", costTime);
         renderJSON(result);
     }
@@ -91,5 +91,57 @@ public class Application extends Controller {
 
         renderJSON(result);
     }
+
+    public static void testhealth() {
+        long start = System.currentTimeMillis();
+//      http://localhost:8080/proxy/client/call.action?msapiurl=http://ZIOT.DMS.1.0.0.DEV/api/ziot/dms/device/get&method=POST&contentType=application/json;charset=UTF-8&headers={%22tenantId%22:0}&params={%22propertyId%22:12380,%22tenantId%22:456}
+        String proxy = "http://localhost:8080/proxy/client/call.action";
+        String msapiurl = "http://PLAY-MS-SERVICE-DEMO/health";
+        String method = "GET";
+        String contentType = "application/json"; //"application/json;charset=UTF-8"
+        String headers = "{\"tenantId\":456}";
+        String params = "{\"propertyId\":12380,\"tenantId\":456}";
+
+        Result result = new Result();
+
+        try {
+            Header header1 = new Header();
+            header1.put("tenantId", "456");
+
+            Header header2 = new Header();
+            header2.put("tenantId", "456");
+
+            Param<String, Object> param2 = new Param<String, Object>();
+            param2.put("propertyId", 12380);
+            param2.put("tenantId", 456);
+
+
+            /**
+             *  public Render call(@Read(key = "msapiurl", defaultValue = "http://computer-service:8888/api/group/xxx") String msapiurl,
+             @Read(key = "method") String method,
+             @Read(key = "contentType") String contentType,
+             @Read(key = "headers", sampleValue = "{\"tenantId\":0}") String headers,
+             @Read(key = "params") String params) {
+             */
+            Param<String, Object> param1 = new Param<String, Object>();
+            param1.put("msapiurl", msapiurl);
+            param1.put("method", method);
+            param1.put("contentType", contentType);
+            param1.put("headers", JSON.toJSONString(header2));
+            param1.put("params", JSON.toJSONString(param2));
+
+            RestTemplate restTemplate = new RestTemplate();
+            result = restTemplate.invokeForEntity(proxy, method, contentType, header1, param1, 10 * 1000);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        long costTime = System.currentTimeMillis() - start;
+        Logger.info("cost time: %s ", costTime);
+
+        renderJSON(result);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package controllers.jobs;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import com.tonysfriend.ms.bean.InstanceId;
 import com.tonysfriend.ms.bean.Result;
 import com.tonysfriend.ms.constant.Constants;
@@ -21,7 +22,6 @@ import scala.collection.immutable.Stream;
 import sun.net.util.IPAddressUtil;
 
 /**
- *
  * @author
  */
 @OnApplicationStart(async = true)
@@ -39,9 +39,9 @@ public class BootStrap extends Job {
             final String eureka = PropertiesUtil.getProperty("eureka.client.serviceUrl.defaultZone");
 
             final InstanceId instanceId = new InstanceId();
-            instanceId.setHost(IpAddressUtil.getLocalHostAddress());
+            instanceId.setHost(IpAddressUtil.getLocalIp());
             instanceId.setPort(9000);
-            instanceId.setName("PLAY-MSC-CLIENT");
+            instanceId.setName("PLAY-MS-CLIENT-DEMO");
 
             String REGISTER_INSTANCE_URL = String.format(Constants.REGISTER_INSTANCE_URL_FORMATER, eureka, instanceId.getName().toUpperCase());
             Result registResult = client.registerAppInstance(REGISTER_INSTANCE_URL, "POST", "application/xml", instanceId, Constants.DEFAULT_TIMEOUT);

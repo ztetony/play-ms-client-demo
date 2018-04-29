@@ -10,7 +10,10 @@ GET     /                                       Application.index
 GET     /demo                                   Application.demo
 
 # Home page
-GET     /proxy1                                   Application.proxy1
+GET     /proxy1                                 Application.proxy1
+
+#testhealth
+GET     /testhealth                             Application.testhealth
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
